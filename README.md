@@ -26,7 +26,7 @@ openclaw plugins install openclaw-dmxapi
 
 ### 2️⃣ 注册 DMXAPI
 
-通过邀请链接注册（你我都有返利）：
+通过邀请链接注册：
 
 ```
 https://www.dmxapi.cn/register?aff=LpUa

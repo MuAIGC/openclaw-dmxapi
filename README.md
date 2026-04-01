@@ -1,243 +1,206 @@
-# OpenClaw DMXAPI 插件 🦞
+# 🦞 OpenClaw DMXAPI 插件
 
-> DMXAPI 模型聚合插件 - 自动同步模型列表 + 邀请返利追踪
+> **版本：** v1.0.1  
+> **作者：** 木木  
+> **许可：** MIT
 
-[![npm version](https://img.shields.io/npm/v/openclaw-dmxapi.svg)](https://www.npmjs.com/package/openclaw-dmxapi)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
----
-
-## ✨ 功能特性
-
-- 🔄 **自动同步模型列表** - 从 DMXAPI 官网自动抓取最新模型
-- 💰 **余额查询** - 实时查看账户余额和用量统计
-- 🔔 **余额提醒** - 余额不足时自动通知
-- 🎯 **邀请返利** - 通过你的链接注册，自动追踪返利
-- 📊 **模型分类** - 按对话/生图/视频/语音自动分类
+**DMXAPI 模型聚合插件** - 自动同步 762+ 个 AI 模型，支持余额查询、令牌管理、模型限制等功能。
 
 ---
 
-## 🚀 快速开始
+## ⚡ 快速开始
 
-### 1️⃣ 安装插件
+**3 步完成配置：**
 
 ```bash
+# 1. 安装插件（已安装跳过）
 openclaw plugins install openclaw-dmxapi
+
+# 2. 配置凭证
+openclaw config edit
+# 添加：apiKey, systemToken, userId
+
+# 3. 验证
+openclaw dmxapi balance
+openclaw dmxapi models --gemini
 ```
 
-### 2️⃣ 注册 DMXAPI
-
-通过邀请链接注册（你我都有返利）：
-
-```
-https://www.dmxapi.cn/register?aff=LpUa
-```
-
-### 3️⃣ 获取 API Key
-
-1. 登录 DMXAPI 后台
-2. 进入「个人中心」→「API Key」
-3. 创建新的 API Key
-
-### 4️⃣ 配置插件
-
-```bash
-openclaw dmxapi-setup <your-api-key>
-```
+**详细文档：** [USAGE.md](USAGE.md)
 
 ---
 
-## 📖 命令说明
+## 📋 命令速查
 
-### 设置向导
-
-```bash
-# 显示注册教程
-openclaw dmxapi-setup
-
-# 配置 API Key
-openclaw dmxapi-setup sk-xxxxxxxx
-```
-
-### 查看模型
-
-```bash
-# 查看所有可用模型
-openclaw dmxapi-models
-```
-
-输出示例：
-```
-✅ 共 45 个模型
-   💚 免费：30 个
-   💰 付费：15 个
-
-📌 💬 对话模型 (20 个):
-   - GPT-5.2 💚 免费
-   - GPT-5.2 Pro 💚 免费
-   - Claude Sonnet 4 💚 免费
-   ...
-
-📌 🎨 生图模型 (10 个):
-   - Gemini 3.1 Flash Image 💰 ¥0.5000/K
-   - Gemini 3 Pro Image 💰 ¥1.0000/K
-   ...
-```
-
-### 查询余额
-
-```bash
-# 查看余额和用量
-openclaw dmxapi-balance
-```
-
-输出示例：
-```
-┌─────────────────────────┐
-│      DMXAPI 余额        │
-├─────────────────────────┤
-│ 总充值：  ¥100.00        │
-│ 已消费：  ¥23.50         │
-│ 剩余：    ¥76.50         │
-└─────────────────────────┘
-```
-
-### 手动同步
-
-```bash
-# 立即同步模型列表
-openclaw dmxapi-sync
-```
+| 命令 | 用途 | 示例 |
+|------|------|------|
+| `openclaw dmxapi balance` | 查询余额 | `openclaw dmxapi balance` |
+| `openclaw dmxapi models` | 查看模型 | `openclaw dmxapi models --gemini` |
+| `openclaw dmxapi tokens` | 查看令牌 | `openclaw dmxapi tokens --limit 10` |
+| `openclaw dmxapi token-create` | 创建令牌 | `openclaw dmxapi token-create "项目" --quota 500000` |
+| `openclaw dmxapi setup` | 配置向导 | `openclaw dmxapi setup` |
 
 ---
 
-## ⚙️ 配置选项
+## 🔑 配置说明
 
-在 `~/.openclaw/config.json` 中配置：
+编辑 `~/.openclaw/openclaw.json`：
 
 ```json
 {
   "plugins": {
-    "dmxapi": {
-      "apiKey": "sk-xxxxxxxx",
-      "autoSync": true,
-      "syncInterval": 86400,
-      "inviteCode": "LpUa",
-      "enableBalanceNotify": true,
-      "balanceThreshold": 10
+    "entries": {
+      "openclaw-dmxapi": {
+        "enabled": true,
+        "config": {
+          "apiKey": "sk-你的 API Key",
+          "systemToken": "你的系统令牌",
+          "userId": "你的用户 ID"
+        }
+      }
     }
   }
 }
 ```
 
-| 选项 | 说明 | 默认值 |
-|------|------|--------|
-| `apiKey` | DMXAPI API Key | 必填 |
-| `autoSync` | 是否自动同步模型 | `true` |
-| `syncInterval` | 同步间隔（秒） | `86400` (24 小时) |
-| `inviteCode` | 邀请码 | `LpUa` |
-| `enableBalanceNotify` | 启用余额通知 | `true` |
-| `balanceThreshold` | 余额不足阈值（元） | `10` |
+**获取凭证：**
+1. 访问 https://www.dmxapi.cn
+2. 登录 → 个人设置 → 更多选项
+3. 复制 **系统令牌** 和 **用户 ID**
 
 ---
 
-## 💡 使用场景
+## 🎯 核心功能
 
-### 1️⃣ 自动更新模型列表
+### 1. 模型查询
 
-插件会每 24 小时自动同步 DMXAPI 的最新模型，无需手动更新配置。
-
-### 2️⃣ 余额监控
-
-当余额低于阈值时，会自动发送通知提醒充值。
-
-### 3️⃣ 邀请返利
-
-用户通过你的邀请链接注册并充值，你可以获得返利。
-
-查看邀请统计：
 ```bash
-openclaw dmxapi-invites
+# 查看所有模型（762 个）
+openclaw dmxapi models
+
+# 只看 Gemini 系列（42 个）
+openclaw dmxapi models --gemini
+```
+
+### 2. 余额查询
+
+```bash
+openclaw dmxapi balance
+```
+
+**输出：**
+```
+┌─────────────────────────────┐
+│      DMXAPI 账户余额        │
+├─────────────────────────────┤
+│ 用户：github_5239
+│ 账户额度：20,161,356
+│ 人民币余额：¥40.32
+└─────────────────────────────┘
+```
+
+### 3. 令牌管理
+
+```bash
+# 创建有限额度令牌（¥1）
+openclaw dmxapi token-create "测试" --quota 500000
+
+# 创建无限额度令牌
+openclaw dmxapi token-create "生产" --unlimited
+
+# 查看令牌列表
+openclaw dmxapi tokens --limit 10
+```
+
+### 4. 高级功能（curl）
+
+**设置模型限制：**
+```bash
+curl -X PUT "https://www.dmxapi.cn/api/token/" \
+  -H "Authorization: 系统令牌" \
+  -H "Rix-Api-User: 用户 ID" \
+  -d '{"id": 54318, "model_limits_enabled": true, "model_limits": "gpt-5.2,kimi-k2.5-free"}'
+```
+
+**删除令牌：**
+```bash
+curl -X DELETE "https://www.dmxapi.cn/api/token/54318" \
+  -H "Authorization: 系统令牌" \
+  -H "Rix-Api-User: 用户 ID"
 ```
 
 ---
 
-## 🔧 开发
+## 📚 完整文档
 
-### 本地开发
+- **[USAGE.md](USAGE.md)** - 完整使用指南
+- **[QUICKSTART.md](QUICKSTART.md)** - 快速启动指南
+- **[API_USAGE.md](API_USAGE.md)** - API 接口文档
+- **[BALANCE_GUIDE.md](BALANCE_GUIDE.md)** - 余额查询指南
+- **[TOKENS_GUIDE.md](TOKENS_GUIDE.md)** - 令牌管理指南
+- **[FEATURES.md](FEATURES.md)** - 功能列表
 
+---
+
+## 💡 最佳实践
+
+**生产环境：**
 ```bash
-# 克隆项目
-git clone https://github.com/mmxers/openclaw-dmxapi
-
-# 安装依赖
-npm install
-
-# 编译
-npm run build
-
-# 监听模式
-npm run dev
+openclaw dmxapi token-create "生产_主服务" --unlimited
+# 然后设置模型限制
 ```
 
-### 测试
-
+**测试环境：**
 ```bash
-# 运行测试
-npm test
+openclaw dmxapi token-create "测试_开发" --quota 2500000  # ¥5
+```
+
+**临时使用：**
+```bash
+openclaw dmxapi token-create "临时_外包" --quota 500000  # ¥1
 ```
 
 ---
 
-## 📊 模型支持
+## 🔍 常见问题
 
-### 免费模型
+**Q: 提示"未配置 API Key"？**  
+A: 运行 `openclaw config edit` 添加配置。
 
-- GPT-5.2 / GPT-5.2-Pro
-- Claude Sonnet 4 / Opus 4
-- Gemini 2.5 Flash / Pro
-- 以及更多...
+**Q: 余额为 0 能用吗？**  
+A: 可以，免费模型随便用（GPT-5.2、Claude-Sonnet-4 等）。
 
-### 付费模型
-
-- Gemini 3.1 Flash Image (生图)
-- Gemini 3 Pro Image (生图)
-- Gemini 2.5 Pro TTS (语音)
-- 以及更多...
+**Q: 如何查看免费模型？**  
+A: `openclaw dmxapi models` 找 `💚 免费` 标记。
 
 ---
 
-## 🤝 商务合作
+## 📞 支持
 
-DMXAPI 官方合作：
-- 📧 邮箱：support@dmxapi.cn
-- 💬 微信：
-- 🌐 官网：https://www.dmxapi.cn
+- **官网：** https://www.dmxapi.cn
+- **文档：** https://doc.dmxapi.cn
+- **客服：** DMXAPI666 (微信)
+- **邮箱：** support@dmxapi.cn
 
 ---
 
 ## 📝 更新日志
 
-### v1.0.0 (2026-04-01)
+### v1.0.1 (2026-04-01)
 
-- ✨ 初始版本发布
-- 🔄 模型列表自动同步
-- 💰 余额查询功能
-- 🔔 余额不足通知
+**新增：**
+- ✅ 令牌创建（有限/无限额度）
+- ✅ 余额查询
+- ✅ 模型列表查询
+- ✅ 配置向导
 
----
-
-## 📄 许可证
-
-MIT License © 2026 木木
-
----
-
-## 🙏 致谢
-
-- [DMXAPI](https://www.dmxapi.cn) - 提供优质的大模型 API 服务
-- [OpenClaw](https://github.com/openclaw/openclaw) - 强大的 AI 网关框架
+**高级：**
+- ✅ 修改令牌配置
+- ✅ 设置模型限制
+- ✅ 设置令牌分组
+- ✅ 删除令牌
 
 ---
 
 **🦞 Happy Coding!**
+
+_最后更新：2026-04-01_

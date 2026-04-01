@@ -1,0 +1,21 @@
+{
+  "id": "openclaw-dmxapi",
+  "label": "DMXAPI",
+  "version": "1.0.0",
+  "description": "DMXAPI 模型聚合插件",
+  "author": "木木",
+  "license": "MIT",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "apiKey": {
+        "type": "string",
+        "sensitive": true
+      },
+      "autoSync": {
+        "type": "boolean",
+        "default": true
+      }
+    }
+  }
+}

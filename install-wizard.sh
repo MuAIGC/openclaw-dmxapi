@@ -68,24 +68,50 @@ main() {
     else
         print_info "开始安装 DMXAPI 插件..."
         
-        # 检查插件目录是否存在
-        if [ -d "插件安装目录" ]; then
-            print_step "从本地安装插件..."
-            cd 插件安装目录
-            openclaw plugins install . 2>&1 | grep -E "(✅|✔|成功)" || true
-        else
-            print_error "插件目录不存在：插件安装目录"
-            print_info "请先克隆或下载插件代码"
+        # 从 GitHub 下载安装
+        print_step "从 GitHub 下载插件..."
+        
+        # 创建临时目录
+        TEMP_DIR=$(mktemp -d)
+        cd "$TEMP_DIR"
+        
+        # 下载插件代码
+        curl -sL "https://github.com/MuAIGC/openclaw-dmxapi/archive/refs/heads/main.tar.gz" -o plugin.tar.gz
+        
+        if [ ! -f "plugin.tar.gz" ]; then
+            print_error "下载失败，请检查网络连接"
             exit 1
         fi
+        
+        # 解压
+        tar -xzf plugin.tar.gz
+        cd openclaw-dmxapi-main
+        
+        # 安装依赖
+        print_step "安装依赖..."
+        npm install --silent 2>/dev/null || true
+        
+        # 编译
+        print_step "编译插件..."
+        npm run build --silent 2>/dev/null || true
+        
+        # 安装到 OpenClaw
+        print_step "安装到 OpenClaw..."
+        openclaw plugins install . 2>&1 | grep -E "(✅|✔|成功|Installed)" || true
+        
+        # 清理临时目录
+        cd /
+        rm -rf "$TEMP_DIR"
     fi
     
     echo
-    read -p "按回车键继续..." -r
+    print_success "插件安装完成！"
+    echo
+    read -p "按回车键继续配置..." -r
     echo
     
     # 步骤 2: 引导注册 DMXAPI
-    print_step "步骤 2: 注册 DMXAPI 账号"
+    print_step "步骤 2: 配置 DMXAPI 账号"
     echo ""
     
     echo "DMXAPI 是一个大模型 API 聚合平台，提供："
@@ -94,28 +120,14 @@ main() {
     echo "  • 免费额度和优惠价格"
     echo ""
     
-    read -p "您已经有 DMXAPI 账号吗？(y/n) " -n 1 -r
-    echo
-    
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        print_info "请打开以下链接注册账号（免费）："
-        echo ""
-        echo -e "${BLUE}  https://www.dmxapi.cn/register?aff=LpUa${NC}"
-        echo ""
-        echo "注册后请完成以下操作："
-        echo "  1. 登录 DMXAPI 官网"
-        echo "  2. 进入：工作台 → 个人设置 → 更多选项"
-        echo "  3. 复制：系统令牌 和 用户 ID"
-        echo ""
-        
-        read -p "完成注册后按回车键继续..." -r
-    else
-        print_success "已有账号，继续配置"
-    fi
-    
-    echo
-    read -p "按回车键继续..." -r
-    echo
+    print_info "请打开以下链接注册/登录账号（免费）："
+    echo ""
+    echo -e "${BLUE}  https://www.dmxapi.cn/register?aff=LpUa${NC}"
+    echo ""
+    echo "登录后请完成以下操作："
+    echo "  1. 进入：个人设置 → 更多选项"
+    echo "  2. 复制：系统令牌 和 用户 ID"
+    echo ""
     
     # 步骤 3: 配置系统令牌
     print_step "步骤 3: 配置 DMXAPI"
@@ -198,7 +210,7 @@ main() {
     echo "  openclaw dmxapi-help"
     echo ""
     echo "更多信息请查看："
-    echo "  插件安装目录/USAGE.md"
+    echo "  https://github.com/MuAIGC/openclaw-dmxapi/blob/main/USAGE.md"
     echo ""
     
     # 显示余额

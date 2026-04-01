@@ -4,6 +4,9 @@
   "description": "DMXAPI 全功能创意插件测试版 - 对话/生图/修图/融合/TTS/视频",
   "main": "dist/index.js",
   "type": "module",
+  "openclaw": {
+    "extensions": ["./dist/index.js"]
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"

@@ -69,12 +69,12 @@ main() {
         print_info "开始安装 DMXAPI 插件..."
         
         # 检查插件目录是否存在
-        if [ -d "/MMXTools/OpenClaw/workspace/plugins/openclaw-dmxapi" ]; then
+        if [ -d "插件安装目录" ]; then
             print_step "从本地安装插件..."
-            cd /MMXTools/OpenClaw/workspace/plugins/openclaw-dmxapi
+            cd 插件安装目录
             openclaw plugins install . 2>&1 | grep -E "(✅|✔|成功)" || true
         else
-            print_error "插件目录不存在：/MMXTools/OpenClaw/workspace/plugins/openclaw-dmxapi"
+            print_error "插件目录不存在：插件安装目录"
             print_info "请先克隆或下载插件代码"
             exit 1
         fi
@@ -198,7 +198,7 @@ main() {
     echo "  openclaw dmxapi-help"
     echo ""
     echo "更多信息请查看："
-    echo "  /MMXTools/OpenClaw/workspace/plugins/openclaw-dmxapi/README_COMPLETE.md"
+    echo "  插件安装目录/USAGE.md"
     echo ""
     
     # 显示余额

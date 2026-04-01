@@ -1,15 +1,7 @@
-# 🚀 OpenClaw DMXAPI 插件 - 云镜像快速启动指南
+# 🚀 OpenClaw DMXAPI 插件 - 快速启动指南
 
-> 适用场景：云镜像预装，用户一键配置使用
-
----
-
-## 📦 预装内容
-
-云镜像已预装：
-- ✅ OpenClaw DMXAPI 插件
-- ✅ 完整文档和示例
-- ✅ 安装向导脚本
+> 版本：v1.0.1  
+> GitHub：https://github.com/MuAIGC/openclaw-dmxapi
 
 ---
 
@@ -18,8 +10,8 @@
 ### 方式 1：使用安装向导（推荐）
 
 ```bash
-# 执行安装向导
-bash /MMXTools/OpenClaw/workspace/plugins/openclaw-dmxapi/install-wizard.sh
+# 执行安装向导（从 GitHub 获取）
+bash <(curl -s https://raw.githubusercontent.com/MuAIGC/openclaw-dmxapi/main/install-wizard.sh)
 ```
 
 **向导会引导您：**
@@ -48,15 +40,6 @@ openclaw dmxapi-balance
 
 ---
 
-### 方式 3：一键命令（最简单）
-
-```bash
-# 复制粘贴这一行命令
-bash /MMXTools/OpenClaw/workspace/plugins/openclaw-dmxapi/install-wizard.sh
-```
-
----
-
 ## 📋 常用命令
 
 配置完成后，可以使用以下命令：
@@ -69,6 +52,9 @@ openclaw dmxapi-models
 
 # 搜索特定模型
 openclaw dmxapi-model search gpt
+
+# 只看 Gemini 系列
+openclaw dmxapi-models --gemini
 ```
 
 ### 余额和消耗
@@ -93,38 +79,15 @@ openclaw dmxapi-tokens list
 # 创建新令牌
 openclaw dmxapi-tokens create 我的令牌 500000
 
-# 搜索令牌
-openclaw dmxapi-tokens search 关键词
-```
-
-### 日志查询
-
-```bash
-# 今日日志
-openclaw dmxapi-logs today
-
-# 本周日志
-openclaw dmxapi-logs week
-
-# 查询特定模型的日志
-openclaw dmxapi-logs week gpt-5.2
+# 创建无限额度令牌
+openclaw dmxapi-tokens create 项目令牌 --unlimited
 ```
 
 ---
 
 ## 🔧 故障排查
 
-### 问题 1: 找不到安装向导
-
-```bash
-# 检查文件是否存在
-ls -lh /MMXTools/OpenClaw/workspace/plugins/openclaw-dmxapi/install-wizard.sh
-
-# 如果没有，手动执行配置
-openclaw dmxapi-token <系统令牌> <用户 ID>
-```
-
-### 问题 2: 配置失败
+### 问题 1: 配置失败
 
 ```bash
 # 重新配置
@@ -134,101 +97,24 @@ openclaw dmxapi-token <新的系统令牌> <新的用户 ID>
 openclaw dmxapi-balance
 ```
 
-### 问题 3: 插件未安装
+### 问题 2: 插件未安装
 
 ```bash
-# 手动安装
-cd /MMXTools/OpenClaw/workspace/plugins/openclaw-dmxapi
-openclaw plugins install .
+# 从 GitHub 安装
+bash <(curl -s https://raw.githubusercontent.com/MuAIGC/openclaw-dmxapi/main/install-wizard.sh)
 ```
 
 ---
 
 ## 📚 完整文档
 
-查看完整使用文档：
-
-```bash
-# 完整使用指南
-cat /MMXTools/OpenClaw/workspace/plugins/openclaw-dmxapi/README_COMPLETE.md
-
-# API 使用指南
-cat /MMXTools/OpenClaw/workspace/plugins/openclaw-dmxapi/API_USAGE.md
-
-# 余额查询指南
-cat /MMXTools/OpenClaw/workspace/plugins/openclaw-dmxapi/BALANCE_GUIDE.md
-
-# 令牌管理指南
-cat /MMXTools/OpenClaw/workspace/plugins/openclaw-dmxapi/TOKENS_GUIDE.md
-```
-
----
-
-## 💡 使用示例
-
-### 示例 1: 查看可用模型
-
-```bash
-openclaw dmxapi-models
-```
-
-**输出：**
-```
-✅ 共 766 个模型
-   💚 免费：37 个
-   💰 付费：729 个
-
-📌 CHAT (400 个):
-   - GPT-5.2 💚 免费
-   - GPT-5.2 Pro 💰 ¥0.5000/K
-   - Claude Sonnet 4 💚 免费
-   ...
-```
-
-### 示例 2: 查询余额
-
-```bash
-openclaw dmxapi-balance
-```
-
-**输出：**
-```
-┌─────────────────────────────────┐
-│      DMXAPI 余额                │
-├─────────────────────────────────┤
-│ 用户：github_<YOUR_USER_ID> (Tier 5)      │
-│ 账户额度：20,174,699             │
-│ 人民币余额：￥40.35              │
-└─────────────────────────────────┘
-```
-
-### 示例 3: 创建 API Key
-
-```bash
-# 创建测试 Key（1 元额度）
-openclaw dmxapi-tokens create 测试 Key 500000
-
-# 创建项目 Key（无限额度）
-openclaw dmxapi-tokens create 项目 A 令牌
-```
-
-### 示例 4: 设置模型限制
-
-```bash
-# 为测试 Key 设置免费模型白名单
-openclaw dmxapi-tokens update <Key ID> "" "" "" "gpt-5.2,kimi-k2.5-free"
-```
+- **快速入门：** https://github.com/MuAIGC/openclaw-dmxapi/blob/main/README.md
+- **使用指南：** https://github.com/MuAIGC/openclaw-dmxapi/blob/main/USAGE.md
+- **部署说明：** https://github.com/MuAIGC/openclaw-dmxapi/blob/main/QUICKSTART.md
 
 ---
 
 ## 🆘 获取帮助
-
-### 在线帮助
-
-```bash
-# 查看所有可用命令
-openclaw dmxapi-help
-```
 
 ### 官方文档
 

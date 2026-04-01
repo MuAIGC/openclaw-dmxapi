@@ -211,7 +211,7 @@ npm test
 
 DMXAPI 官方合作：
 - 📧 邮箱：support@dmxapi.cn
-- 💬 微信：DMXAPI666
+- 💬 微信：
 - 🌐 官网：https://www.dmxapi.cn
 
 ---

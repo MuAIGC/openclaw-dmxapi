@@ -1,0 +1,21 @@
+{
+  "name": "dmxapi-test",
+  "version": "2.0.0-test",
+  "description": "DMXAPI 全功能创意插件测试版 - 对话/生图/修图/融合/TTS/视频",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "keywords": ["dmxapi", "openclaw", "plugin", "ai", "image", "chat"],
+  "author": "木木",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

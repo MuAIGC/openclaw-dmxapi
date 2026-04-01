@@ -1,0 +1,27 @@
+{
+  "id": "dmxapi-test",
+  "label": "DMXAPI Test",
+  "version": "2.0.0-test",
+  "description": "DMXAPI 全功能创意插件测试版",
+  "author": "木木",
+  "license": "MIT",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "apiKey": {
+        "type": "string",
+        "sensitive": true,
+        "description": "DMXAPI API Key"
+      },
+      "systemToken": {
+        "type": "string",
+        "sensitive": true,
+        "description": "系统令牌"
+      },
+      "userId": {
+        "type": "string",
+        "description": "用户 ID"
+      }
+    }
+  }
+}

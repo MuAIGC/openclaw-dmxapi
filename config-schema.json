@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "apiKey": {
+      "type": "string",
+      "description": "DMXAPI API Key",
+      "sensitive": true,
+      "required": true
+    },
+    "autoSync": {
+      "type": "boolean",
+      "description": "是否自动同步模型列表",
+      "default": true
+    },
+    "syncInterval": {
+      "type": "number",
+      "description": "同步间隔（秒）",
+      "default": 86400,
+      "minimum": 3600
+    },
+    "inviteCode": {
+      "type": "string",
+      "description": "邀请码（用于返利追踪）",
+      "default": "LpUa"
+    },
+    "enableBalanceNotify": {
+      "type": "boolean",
+      "description": "启用余额不足通知",
+      "default": true
+    },
+    "balanceThreshold": {
+      "type": "number",
+      "description": "余额不足阈值（元）",
+      "default": 10
+    }
+  },
+  "required": ["apiKey"]
+}

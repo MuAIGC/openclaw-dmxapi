@@ -1,0 +1,44 @@
+{
+  "name": "openclaw-dmxapi",
+  "version": "1.0.0",
+  "description": "DMXAPI 模型聚合插件 - 自动同步模型列表 + 邀请返利追踪",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "openclaw",
+    "plugin",
+    "dmxapi",
+    "ai",
+    "llm"
+  ],
+  "author": "木木 <mumu@mmxers.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmxers/openclaw-dmxapi"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "config-schema.json"
+  ]
+}

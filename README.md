@@ -1,6 +1,6 @@
 # OpenClaw DMXAPI 插件 🦞
 
-> DMXAPI 模型聚合插件 - 自动同步模型列表 + 邀请返利追踪
+> DMXAPI 模型聚合插件 - 自动同步模型列表
 
 [![npm version](https://img.shields.io/npm/v/openclaw-dmxapi.svg)](https://www.npmjs.com/package/openclaw-dmxapi)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -12,7 +12,6 @@
 - 🔄 **自动同步模型列表** - 从 DMXAPI 官网自动抓取最新模型
 - 💰 **余额查询** - 实时查看账户余额和用量统计
 - 🔔 **余额提醒** - 余额不足时自动通知
-- 🎯 **邀请返利** - 通过你的链接注册，自动追踪返利
 - 📊 **模型分类** - 按对话/生图/视频/语音自动分类
 
 ---
@@ -150,15 +149,6 @@ openclaw dmxapi-sync
 ### 2️⃣ 余额监控
 
 当余额低于阈值时，会自动发送通知提醒充值。
-
-### 3️⃣ 邀请返利
-
-用户通过你的邀请链接注册并充值，你可以获得返利。
-
-查看邀请统计：
-```bash
-openclaw dmxapi-invites
-```
 
 ---
 

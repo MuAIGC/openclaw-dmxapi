@@ -92,7 +92,7 @@ openclaw dmxapi balance
 ┌─────────────────────────────┐
 │      DMXAPI 账户余额        │
 ├─────────────────────────────┤
-│ 用户：github_5239
+│ 用户：github_****
 │ 账户额度：20,161,356
 │ 人民币余额：¥40.32
 └─────────────────────────────┘
@@ -178,7 +178,7 @@ A: `openclaw dmxapi models` 找 `💚 免费` 标记。
 
 - **官网：** https://www.dmxapi.cn
 - **文档：** https://doc.dmxapi.cn
-- **客服：** DMXAPI666 (微信)
+- **客服：** DMXAPI 官方 (微信)
 - **邮箱：** support@dmxapi.cn
 
 ---

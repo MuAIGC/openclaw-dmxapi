@@ -16,8 +16,8 @@
 2. 登录账号
 3. 进入 **个人设置** → **更多选项**
 4. 复制以下内容：
-   - **系统令牌**（如：`ccemMtnqEoRwbz7YbKsBDI4h+33w8Q==`）
-   - **用户 ID**（如：`5239`）
+   - **系统令牌**（如：`你的系统令牌`）
+   - **用户 ID**（如：`****`）
 
 ### 第二步：配置插件
 
@@ -102,7 +102,7 @@ openclaw dmxapi balance
 ┌─────────────────────────────┐
 │      DMXAPI 账户余额        │
 ├─────────────────────────────┤
-│ 用户：github_5239
+│ 用户：github_****
 │ 账户额度：20,161,356
 │ 人民币余额：¥40.32
 └─────────────────────────────┘
@@ -498,7 +498,7 @@ curl -X DELETE "https://www.dmxapi.cn/api/token/ID" \
 
 - **DMXAPI 官网：** https://www.dmxapi.cn
 - **DMXAPI 文档：** https://doc.dmxapi.cn
-- **客服微信：** DMXAPI666
+- **客服微信：** DMXAPI 官方
 - **邮箱：** support@dmxapi.cn
 
 ---

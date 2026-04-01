@@ -169,7 +169,7 @@ openclaw dmxapi-tokens list
 # 3. 隐私检查
 grep -r "sk-[a-zA-Z0-9]" .  # 检查 API Key
 grep -r "pLgV58" .          # 检查系统令牌
-grep -r "5239" .            # 检查用户 ID
+grep -r "****" .            # 检查用户 ID
 
 # 4. 打包
 tar -czvf openclaw-dmxapi-v1.0.0.tar.gz .
@@ -352,7 +352,7 @@ await axios.put('/api/token/', updates);
 # 搜索隐私信息
 grep -r "sk-[a-zA-Z0-9]" .
 grep -r "pLgV58" .
-grep -r "5239" .
+grep -r "****" .
 
 # 替换为占位符
 sed -i 's/sk-xxx/sk-<YOUR_API_KEY>/g' *.md

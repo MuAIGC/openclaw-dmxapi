@@ -239,7 +239,7 @@ openclaw dmxapi-help
 ### 联系方式
 
 - 📧 邮箱：support@dmxapi.cn
-- 💬 微信：DMXAPI666
+- 💬 微信：DMXAPI 官方
 
 ---
 

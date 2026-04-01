@@ -296,7 +296,7 @@ openclaw dmxapi-logs today
 ## 📞 联系方式
 
 - 📧 邮箱：support@dmxapi.cn
-- 💬 微信：DMXAPI666
+- 💬 微信：DMXAPI 官方
 - 🌐 官网：https://www.dmxapi.cn
 - 📚 文档：https://doc.dmxapi.cn
 
